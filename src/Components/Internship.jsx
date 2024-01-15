@@ -1,142 +1,93 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSpring, animated, config } from "react-spring";
 import { useInView } from "react-intersection-observer";
 
-const Internship = () => {
+const Program = ({ number, title, description }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
 
-  useEffect(() => {
-    if (inView) {
-      animateOnScroll();
-    }
-  }, [inView]);
+  // Use react-spring's useSpring hook to animate sliding from the right
+  const slideAnimation = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? "translateX(0)" : "translateX(100%)",
+    config: config.gentle, // Adjust the config for a more pronounced effect
+  });
 
-  const animateOnScroll = () => {
-    // Add class to apply animation on scroll
-    document
-      .querySelector(".programs-container")
-      .classList.add("animate-scroll");
-  };
+  return (
+    <animated.div className="program" ref={ref} style={slideAnimation}>
+      <div className="number">{number}</div>
+      <div className="line-vertical"></div>
+      <div className="line-horizontal"></div>
+      <div className="content">
+        <h2 className="main-header">{title}</h2>
+        <p>{description}</p>
+      </div>
+    </animated.div>
+  );
+};
 
-  const handleMouseOver = (index) => {
-    // Add class to apply mouse-over animation
-    document
-      .querySelector(`.program-${index}`)
-      .classList.add("animate-mouseover");
-  };
-
-  const handleMouseOut = (index) => {
-    // Remove class when mouse leaves
-    document
-      .querySelector(`.program-${index}`)
-      .classList.remove("animate-mouseover");
-  };
+const Internship = () => {
   return (
     <div className="container">
       <h1 className="main-header">Our Internship Programs</h1>
 
       <div className="split-layout">
-        <div className="image-container">
+        {/* Hide the image on mobile devices (screen width less than or equal to 768px) */}
+        <div className="image-container d-none d-md-block">
           <img src="/side-intern.png" alt="Internship Programs Image" />
         </div>
 
-        <div className="programs-container" ref={ref}>
-          <div
-            className="program"
-            onMouseOver={() => handleMouseOver(1)}
-            onMouseOut={() => handleMouseOut(1)}
-          >
-            <div className="number">1</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">Industry-Focused</h2>
-              <p>
-                Our internship programs are tailored to different industries,
-                allowing students to gain specialized knowledge and skills
-                relevant to their career aspirations.
-              </p>
-            </div>
-          </div>
+        <div className="programs-container">
+          <Program
+            number="1"
+            title="Industry-Focused"
+            description="Our internship programs are tailored to different industries, allowing students to gain specialized knowledge and skills relevant to their career aspirations."
+          />
 
-          <div className="program">
-            <div className="number">2</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">Mentorship & Support</h2>
-              <p>
-                We provide dedicated mentorship to guide and support interns
-                throughout their program, ensuring a nurturing environment for
-                growth and development.
-              </p>
-            </div>
-          </div>
+          <Program
+            number="2"
+            title="Mentorship & Support"
+            description="We provide dedicated mentorship to guide and support interns throughout their program, ensuring a nurturing environment for growth and development."
+          />
 
-          <div className="program">
-            <div className="number">3</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">Real-World Experience</h2>
-              <p>
-                Interns are exposed to real industry challenges, projects, and
-                responsibilities, enabling them to apply their academic learning
-                in practical settings.
-              </p>
-            </div>
-          </div>
-          <div className="program">
-            <div className="number">4</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">Learning New Skills</h2>
-              <p>
-                Our programs offer opportunities for interns to learn new skills
-                that are valuable in today's dynamic job market.
-              </p>
-            </div>
-          </div>
+          <Program
+            number="3"
+            title="Real-World Experience"
+            description=" Interns are exposed to real industry challenges, projects, and
+            responsibilities, enabling them to apply their academic learning
+            in practical settings."
+          />
 
-          <div className="program">
-            <div className="number">5</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">AI & DS Workshops</h2>
-              <p>
-                Explore the fascinating world of Artificial Intelligence and
-                Data Science through engaging and hands-on workshops.
-              </p>
-            </div>
-          </div>
-          <div className="program">
-            <div className="number">6</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">Learning New Skills</h2>
-              <p>
-                Our programs offer opportunities for interns to learn new skills
-                that are valuable in today's dynamic job market.
-              </p>
-            </div>
-          </div>
+          <Program
+            number="4"
+            title="Learning New Skills"
+            description="Our programs offer opportunities for interns to learn new skills
+            that are valuable in today's dynamic job market."
+          />
 
-          <div className="program">
-            <div className="number">7</div>
-            <div className="line-vertical"></div>
-            <div className="line-horizontal"></div>
-            <div className="content">
-              <h2 className="main-header">AI & DS Workshops</h2>
-              <p>
-                Explore the fascinating world of Artificial Intelligence and
-                Data Science through engaging and hands-on workshops.
-              </p>
-            </div>
-          </div>
+          <Program
+            number="5"
+            title="AI & DS Workshops"
+            description=" Explore the fascinating world of Artificial Intelligence and
+            Data Science through engaging and hands-on workshops."
+          />
+
+          <Program
+            number="6"
+            title="Learning New Skills"
+            description="Our programs offer opportunities for interns to learn new skills
+            that are valuable in today's dynamic job market."
+          />
+
+          <Program
+            number="7"
+            title="AI & DS Workshops"
+            description="Explore the fascinating world of Artificial Intelligence and
+            Data Science through engaging and hands-on workshops."
+          />
+
+          {/* Repeat the same for other programs */}
         </div>
       </div>
     </div>

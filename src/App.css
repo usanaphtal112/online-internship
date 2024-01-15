@@ -47,6 +47,17 @@
   align-items: flex-start;
 }
 
+@media (max-width: 767px) {
+  .split-layout {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  .image-container {
+    order: -1;
+    margin-bottom: 20px;
+  }
+}
+
 .image-container {
   margin-right: 20px;
 }
@@ -86,4 +97,25 @@
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+/* back to top page */
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
 }

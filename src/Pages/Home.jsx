@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InternBenefits from "../Components/InternBenefits";
 import InternshipProcess from "../Components/InternshipProcess";
 import Internship from "../Components/Internship";

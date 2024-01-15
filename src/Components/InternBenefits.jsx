@@ -8,7 +8,8 @@ function InternBenefits() {
       <h1 className="main-header">Benefits of Interning with IzIntern</h1>
 
       <div className="row">
-        <div className="col-md-5">
+        <div className="col-md-5 d-none d-md-block">
+          {/* This image will be visible only on medium screens and larger */}
           <img
             src="/side-benefits.png"
             alt="Internship Programs"
@@ -162,7 +163,6 @@ function InternBenefits() {
               </Card>
             </div>
           </div>
-
           <div className="col-md-12">
             <Card
               className="mt-4"

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSpring, animated } from "react-spring";
 
 function HeroSection() {
   const sectionStyle = {
@@ -7,10 +8,24 @@ function HeroSection() {
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     color: "white",
-    padding: "150px",
+    padding: "80px", // Adjust padding for smaller screens
     position: "relative",
     borderRadius: "20px",
   };
+
+  // Use react-spring's useSpring hook to animate the opacity
+  const textAnimation = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 1000 }, // Adjust the duration as needed
+  });
+
+  // Use react-spring's useSpring hook to create a subtle parallax effect
+  const parallaxAnimation = useSpring({
+    from: { transform: "translateY(50px)" },
+    to: { transform: "translateY(0)" },
+    config: { tension: 20, friction: 8 }, // Adjust tension and friction for desired effect
+  });
 
   const overlayStyle = {
     content: '""',
@@ -23,10 +38,14 @@ function HeroSection() {
     borderRadius: "20px",
     zIndex: -1,
   };
+
   return (
-    <div className="container" style={sectionStyle}>
+    <animated.div
+      className="container"
+      style={{ ...sectionStyle, ...parallaxAnimation }}
+    >
       <div className="row">
-        <div className="center-content">
+        <animated.div className="center-content" style={textAnimation}>
           <h1 className="main-header">About IzIntern</h1>
           <p>
             IzIntern offers dynamic internship programs to students seeking
@@ -37,10 +56,10 @@ function HeroSection() {
             the skills and knowledge needed to succeed in the competitive job
             market.
           </p>
-        </div>
+        </animated.div>
       </div>
       <div style={overlayStyle}></div>
-    </div>
+    </animated.div>
   );
 }
 

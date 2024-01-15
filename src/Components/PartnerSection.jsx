@@ -18,7 +18,7 @@ export const PartnerSection = () => {
     <div>
       <h1 className="main-header">Our Partner Companies</h1>
       <Row>
-        <Col>
+        <Col sm={12} md={6}>
           <Card className="responsive-card" style={cardStyle}>
             <Card.Body>
               <Card.Title>Global Corporations</Card.Title>
@@ -34,7 +34,7 @@ export const PartnerSection = () => {
             />
           </Card>
         </Col>
-        <Col>
+        <Col sm={12} md={6}>
           <Card className="responsive-card" style={cardStyle}>
             <Card.Body>
               <Card.Title>Start-up Ecosystem</Card.Title>
