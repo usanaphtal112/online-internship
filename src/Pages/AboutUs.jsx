@@ -13,9 +13,7 @@ const AboutUs = () => {
 
       <h3>Our Vision</h3>
       <p>
-        We envision a world where students seamlessly transition from
-        educational institutions to the professional world, armed with practical
-        skills and the confidence to succeed in their careers.
+      The primary agenda of this website is to offer internship opportunities to graduating students in various tech-related domains. The internships aim to provide hands-on experience with domain-specific projects, introduce tools essential for project development, and assure participants a collaborative company experience while completing their projects.
       </p>
 
       <h3>Why Choose IzIntern?</h3>
